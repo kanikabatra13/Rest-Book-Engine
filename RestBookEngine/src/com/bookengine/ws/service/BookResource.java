@@ -1,5 +1,6 @@
 package com.bookengine.ws.service;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.ws.rs.GET;

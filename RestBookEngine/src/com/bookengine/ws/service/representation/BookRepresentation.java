@@ -18,12 +18,12 @@ public class BookRepresentation {
 	public BookRepresentation() {
 		}
 
-	public BookRepresentation(String id, String bName, String aName, String isbn) {
-		this.bookId = id;
-		this.bookName = bName;
-		this.authorName = aName;
-		this.isbn = isbn;
-	}
+//	public BookRepresentation(String id, String bName, String aName, String isbn) {
+//		this.bookId = id;
+//		this.bookName = bName;
+//		this.authorName = aName;
+//		this.isbn = isbn;
+//	}
 
 	public String getBookId() {
 		return bookId;
