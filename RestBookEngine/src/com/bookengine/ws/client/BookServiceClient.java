@@ -10,7 +10,6 @@ import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
-import com.bookengine.ws.Book;
 
 public final class BookServiceClient {
 	
