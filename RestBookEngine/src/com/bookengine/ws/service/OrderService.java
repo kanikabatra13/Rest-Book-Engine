@@ -9,6 +9,6 @@ import com.bookengine.ws.service.representation.OrderRequest;
 @WebService
 public interface OrderService {
 
-	public OrderRepresentation buyBooks(OrderRequest orderrequest);
+	public OrderRepresentation addOrder(OrderRequest orderrequest);
 	public String getOrderStatus(String orderID);
 }

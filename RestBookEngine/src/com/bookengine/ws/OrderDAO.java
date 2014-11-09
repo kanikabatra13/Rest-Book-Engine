@@ -3,6 +3,7 @@ package com.bookengine.ws;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class OrderDAO {
@@ -18,8 +19,20 @@ public class OrderDAO {
 //		order.setStatus(status);
 	}
 	
-	public Order buyBooks(Order order)
+	public Order buyBooks(String bookId)
 	{
+		Order order = new Order();
+		Customer customer = new Customer( );
+		PaymentInfo paymentinfo = new PaymentInfo();
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(100);
+		
+	    String id = "" + randomInt;
+	    order.setOrderID(id);
+	    order.setBookID(bookId);
+	    order.setCustomer(customer);
+	    order.setPaymentinfo(paymentinfo);
+	    order.setStatus("Ordered");		
 		orders.add(order);
 		return order;
 	}

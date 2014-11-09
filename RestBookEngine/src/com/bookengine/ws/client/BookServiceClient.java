@@ -57,6 +57,31 @@ public final class BookServiceClient {
 //         System.out.println("Book Name:" +book.getBookName());
 //         System.out.println("Book Name:" +book.getAuthorName());
          
+         
+         /*****************************************************************************************
+          * GET METHOD invoke author name
+          *****************************************************************************************/
+//         System.out.println("GET METHOD .........................................................");
+//         WebClient getClient2 = WebClient.create("http://localhost:8081", providers);
+//         
+//         //Configuring the CXF logging interceptor for the outgoing message
+//         WebClient.getConfig(getClient2).getOutInterceptors().add(new LoggingOutInterceptor());
+//       //Configuring the CXF logging interceptor for the incoming response
+//         WebClient.getConfig(getClient2).getInInterceptors().add(new LoggingInInterceptor());
+//         
+//         // change application/xml  to get in xml format
+//         getClient2 = getClient2.accept("application/json").type("application/json").path("/bookservice/book/kanika");
+//         
+//         //The following lines are to show how to log messages without the CXF interceptors
+//         String getRequestURI2 = getClient2.getCurrentURI().toString();
+//         System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
+//         String getRequestHeaders2 = getClient2.getHeaders().toString();
+//         System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
+//         
+//         //to see as raw XML/json
+//         String response2 = getClient2.get(String.class);
+//         System.out.println("GET METHOD Response: ...." + response2);
+         
          System.exit(0);
 }
 }

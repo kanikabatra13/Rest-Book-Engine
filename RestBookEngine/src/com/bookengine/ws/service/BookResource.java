@@ -32,6 +32,14 @@ public class BookResource implements BookService {
 						+ bookId);
 		BookActivity bookActivity = new BookActivity();
 		return bookActivity.searchId(bookId);
+		
 	}
+	
+	
+		
+	}
+	
+	
+	
 
-}
+

@@ -30,5 +30,21 @@
 	</jaxrs:server>
   	<bean id="bookServiceRest" class="com.bookengine.ws.service.BookResource" />
   
+  <jaxrs:server name="OrderService" address="http://localhost:8081">
+		<jaxrs:serviceBeans>
+			<ref bean="orderServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.OrderRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.OrderRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+  	<bean id="orderServiceRest" class="com.bookengine.ws.service.OrderResource" />
+  
 
 </beans>

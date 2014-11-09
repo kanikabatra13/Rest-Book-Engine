@@ -12,5 +12,7 @@ public interface BookService {
 
 	public Set<BookRepresentation> searchAllBooks();
 	public BookRepresentation searchId(String bookId);
+	//public BookRepresentation searchAuthor(String authorName);
+	
 
 }

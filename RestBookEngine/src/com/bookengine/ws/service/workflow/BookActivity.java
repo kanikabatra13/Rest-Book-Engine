@@ -43,8 +43,22 @@ public class BookActivity {
 		bookRep.setBookId(book.getBookId());
 		bookRep.setBookName(book.getBookName());
 		bookRep.setIsbn(book.getIsbn());
-		bookRep.setBookId(book.getAuthorName());
+		bookRep.setAuthorName(book.getAuthorName());
 
 		return bookRep;
 	}
+	
+	
+//	public BookRepresentation searchAuthor(String authorName) {
+//
+//		Book book = dao.searchAuthor(authorName);
+//
+//		BookRepresentation bookRep = new BookRepresentation();
+//		bookRep.setBookId(book.getBookId());
+//		bookRep.setBookName(book.getBookName());
+//		bookRep.setIsbn(book.getIsbn());
+//		bookRep.setBookId(book.getAuthorName());
+//
+//		return bookRep;
+//	}
 }
