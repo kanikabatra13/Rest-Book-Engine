@@ -30,7 +30,7 @@ public class OrderServiceClient {
       * POST METHOD invoke
      *****************************************************************************************/
      System.out.println("POST METHOD .........................................................");
-     WebClient postClient = WebClient.create("http://localhost:8081", providers);
+     WebClient postClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(postClient).getOutInterceptors().add(new LoggingOutInterceptor());
      WebClient.getConfig(postClient).getInInterceptors().add(new LoggingInInterceptor());
               

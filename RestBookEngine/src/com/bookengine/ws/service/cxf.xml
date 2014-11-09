@@ -30,7 +30,7 @@
 	</jaxrs:server>
   	<bean id="bookServiceRest" class="com.bookengine.ws.service.BookResource" />
   
-  <jaxrs:server name="OrderService" address="http://localhost:8081">
+  <jaxrs:server name="OrderService" address="http://localhost:8082">
 		<jaxrs:serviceBeans>
 			<ref bean="orderServiceRest" />
 		</jaxrs:serviceBeans>
