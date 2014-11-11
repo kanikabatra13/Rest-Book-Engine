@@ -25,6 +25,22 @@ public class OrderActivity {
 		return orderRep;
 	}
 	
+	public String getOrderStatus(String orderID)
+	{
+	
+        String status = orderdao.getOrderStatus(orderID);
+		
+		/*OrderRepresentation orderRep = new OrderRepresentation();
+		orderRep.setBookID(order.getBookID());
+		orderRep.setOrderID(order.getOrderID());
+		orderRep.setCustomer(order.getCustomer());
+		orderRep.setPaymentinfo(order.getPaymentinfo());
+		orderRep.setStatus(order.getStatus());
+		*/
+		
+		return status;
+	}
+	
 	
 
 }

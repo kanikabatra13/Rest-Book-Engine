@@ -17,8 +17,20 @@ public class OrderDAO {
 //		Set status = new HashSet();
 //		status.add("Ordered");
 //		order.setStatus(status);
+		Customer customer = new Customer();
+		PaymentInfo paymentinfo = new PaymentInfo();
+		
+		Order order1 = new Order("546","Y1","Shipped",customer,paymentinfo);
+		Order order2= new Order("782","X2","Ordered",customer,paymentinfo);
+		Order order3= new Order("389","X3","Processed",customer,paymentinfo);
+		
+		orders.add(order1);
+		orders.add(order2);
+		orders.add(order3);
+		
 	}
 	
+
 	public Order buyBooks(String bookId)
 	{
 		Order order = new Order();
