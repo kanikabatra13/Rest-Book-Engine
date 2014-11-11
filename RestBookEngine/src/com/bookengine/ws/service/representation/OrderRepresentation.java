@@ -1,8 +1,16 @@
 package com.bookengine.ws.service.representation;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 import com.bookengine.ws.Customer;
 import com.bookengine.ws.PaymentInfo;
 
+@XmlRootElement(name = "Order")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
 public class OrderRepresentation {
 	
 	private String orderID;
