@@ -67,6 +67,25 @@ public class OrderDAO {
 		return null;
 	}
 	
+	public String cancelOrder(String orderID) {
+		for (Order order : orders) {
+			if (order.getOrderID().equals(orderID))
+			{   
+				if(order.getStatus().equals("Shipped"))
+				 return "Order has been Shipped it can no longer be cancelled";
+				else
+				{	
+					orders.remove(order);
+					return "Order has been cancelled.";
+					
+				}
+				
+				
+			}
+		}
+		return "OrderID is not valid";
+	}
+	
 	public Customer getCustomerInfo(String orderID) {
 		for (Order order : orders) {
 			if (order.getOrderID().equals(orderID))

@@ -11,4 +11,5 @@ public interface OrderService {
 
 	public OrderRepresentation addOrder(OrderRequest orderrequest);
 	public String getOrderStatus(String orderID);
+	public String orderCancel(String orderID);
 }
