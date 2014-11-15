@@ -14,10 +14,10 @@ public class BookActivity {
 
 	private static BookDAO dao = new BookDAO();
 
-	public Set<BookRepresentation> searchAllBooks() {
+	public List<BookRepresentation> searchAllBooks() {
 
 		List<Book> books = new ArrayList<Book>();
-		Set<BookRepresentation> bookRepresentations = new HashSet<BookRepresentation>();
+		List<BookRepresentation> bookRepresentations = new ArrayList<BookRepresentation>();
 		books = dao.searchAllBooks();
 
 		Iterator<Book> it = books.iterator();
@@ -49,16 +49,29 @@ public class BookActivity {
 	}
 	
 	
-//	public BookRepresentation searchAuthor(String authorName) {
-//
-//		Book book = dao.searchAuthor(authorName);
-//
-//		BookRepresentation bookRep = new BookRepresentation();
-//		bookRep.setBookId(book.getBookId());
-//		bookRep.setBookName(book.getBookName());
-//		bookRep.setIsbn(book.getIsbn());
-//		bookRep.setBookId(book.getAuthorName());
-//
-//		return bookRep;
-//	}
+	public BookRepresentation searchAuthor(String authorName) {
+
+		Book book = dao.searchAuthor(authorName);
+
+		BookRepresentation bookRep = new BookRepresentation();
+		bookRep.setBookId(book.getBookId());
+		bookRep.setBookName(book.getBookName());
+		bookRep.setIsbn(book.getIsbn());
+		bookRep.setAuthorName(book.getAuthorName());
+
+		return bookRep;
+	}
+	
+	public BookRepresentation searchBookName(String bookName) {
+
+		Book book = dao.searchBookname(bookName);
+
+		BookRepresentation bookRep = new BookRepresentation();
+		bookRep.setBookId(book.getBookId());
+		bookRep.setBookName(book.getBookName());
+		bookRep.setIsbn(book.getIsbn());
+		bookRep.setAuthorName(book.getAuthorName());
+
+		return bookRep;
+	}
 }
