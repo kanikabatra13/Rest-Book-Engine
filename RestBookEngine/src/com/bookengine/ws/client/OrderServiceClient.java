@@ -60,7 +60,7 @@ public class OrderServiceClient {
      WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
      
      // change application/xml  to get in xml format
-     getClient = getClient.accept("application/json").type("application/json").path("/orderservice/order/546");
+     getClient = getClient.accept("application/json").type("application/json").path("/orderservice/orderstatus/546");
      
      //The following lines are to show how to log messages without the CXF interceptors
      String getRequestURI = getClient.getCurrentURI().toString();
@@ -73,6 +73,25 @@ public class OrderServiceClient {
      System.out.println("GET METHOD Response: ...." + response);
      
      /*****************************************************************************************
+      * PUT METHOD invoke
+     *****************************************************************************************/
+     System.out.println("PUT METHOD .........................................................");
+     WebClient putClient = WebClient.create("http://localhost:8082", providers);
+     WebClient.getConfig(putClient).getOutInterceptors().add(new LoggingOutInterceptor());
+     WebClient.getConfig(putClient).getInInterceptors().add(new LoggingInInterceptor());
+              
+     // change application/xml  to application/json get in json format
+     putClient = putClient.accept("application/xml").type("application/json").path("/orderservice/ordercancel/546");
+  	
+     String putRequestURI = putClient.getCurrentURI().toString();
+     System.out.println("Client put METHOD Request URI:  " + putRequestURI);
+     String putRequestHeaders = putClient.getHeaders().toString();
+     System.out.println("Client put METHOD Request Headers:  " + putRequestHeaders);
+  	String responseput =  putClient.put(orderRequest, String.class);
+     System.out.println("put MEDTHOD Response ........." + responseput);
+     
+     
+     /*****************************************************************************************
       * DELETE METHOD invoke
      *****************************************************************************************/
      System.out.println("DELETE METHOD .........................................................");
@@ -81,7 +100,7 @@ public class OrderServiceClient {
      WebClient.getConfig(deleteClient).getInInterceptors().add(new LoggingInInterceptor());
      
      // change application/xml  to application/json get in json format
-     deleteClient = deleteClient.accept("application/xml").type("application/json").path("/orderservice/ordercancel/546");
+     deleteClient = deleteClient.accept("application/xml").type("application/json").path("/orderservice/orderdelete/546");
   	
      String deleteRequestURI = deleteClient.getCurrentURI().toString();
      System.out.println("Client DELETE METHOD Request URI:  " + deleteRequestURI);

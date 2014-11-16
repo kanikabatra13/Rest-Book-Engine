@@ -67,23 +67,37 @@ public class OrderDAO {
 		return null;
 	}
 	
-	public String cancelOrder(String orderID) {
+	public String cancelOrder(String orderID){	
 		for (Order order : orders) {
 			if (order.getOrderID().equals(orderID))
 			{   
 				if(order.getStatus().equals("Shipped"))
-				 return "Order has been Shipped it can no longer be cancelled";
-				else
-				{	
-					orders.remove(order);
-					return "Order has been cancelled.";
+				{
+					return "Your Order has been Shipped it cannot be cancelled";
+				}
+				  
+				else{
 					
+			        order.setStatus("Cancelled");
+			        return "Your Order has been cancelled";
 				}
 				
-				
-			}
+		     }
 		}
-		return "OrderID is not valid";
+			return null;
+	}
+	
+	public String deleteOrder(String orderID) {
+		for (Order order : orders) {
+			if (order.getOrderID().equals(orderID))
+			{   
+				orders.remove(order);
+					return "Order has been Deleted.";
+					
+				}
+			
+			}
+		return "null";
 	}
 	
 	public Customer getCustomerInfo(String orderID) {

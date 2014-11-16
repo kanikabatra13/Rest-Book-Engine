@@ -41,19 +41,20 @@ public class OrderActivity {
 		return status;
 	}
 	
+	
 	public String cancelOrder(String orderID)
 	{
 	
         String response = orderdao.cancelOrder(orderID);
 		
-		/*OrderRepresentation orderRep = new OrderRepresentation();
-		orderRep.setBookID(order.getBookID());
-		orderRep.setOrderID(order.getOrderID());
-		orderRep.setCustomer(order.getCustomer());
-		orderRep.setPaymentinfo(order.getPaymentinfo());
-		orderRep.setStatus(order.getStatus());
-		*/
+		return response;
+	}
+	public String deleteOrder(String orderID)
+	{
+	
+        String response = orderdao.deleteOrder(orderID);
 		
+			
 		return response;
 	}
 	
