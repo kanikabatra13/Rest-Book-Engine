@@ -51,7 +51,7 @@ public class OrderServiceClient {
      /*****************************************************************************************
       * GET METHOD invoke
       *****************************************************************************************/
-     System.out.println("GET METHOD .........................................................");
+     System.out.println("\nGET METHOD ............................................OrderStatus");
      WebClient getClient = WebClient.create("http://localhost:8082", providers);
      
      //Configuring the CXF logging interceptor for the outgoing message
@@ -75,7 +75,7 @@ public class OrderServiceClient {
      /*****************************************************************************************
       * PUT METHOD invoke
      *****************************************************************************************/
-     System.out.println("PUT METHOD .........................................................");
+     System.out.println("\nPUT METHOD ......................................................OrderCancel");
      WebClient putClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(putClient).getOutInterceptors().add(new LoggingOutInterceptor());
      WebClient.getConfig(putClient).getInInterceptors().add(new LoggingInInterceptor());
@@ -94,7 +94,7 @@ public class OrderServiceClient {
      /*****************************************************************************************
       * DELETE METHOD invoke
      *****************************************************************************************/
-     System.out.println("DELETE METHOD .........................................................");
+     System.out.println("\nDELETE METHOD .........................................................");
      WebClient deleteClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(deleteClient).getOutInterceptors().add(new LoggingOutInterceptor());
      WebClient.getConfig(deleteClient).getInInterceptors().add(new LoggingInInterceptor());

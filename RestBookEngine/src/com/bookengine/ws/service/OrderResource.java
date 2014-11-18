@@ -57,13 +57,13 @@ public class OrderResource implements OrderService{
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Path("/orderdelete/{orderId}")
-	public String deleteOrder(String orderID) {
+	public String deleteOrder(@PathParam("orderId")String orderID) {
 		
 		System.out.println("\nDelete METHOD Request from Client to delete Order orderId............." + orderID);
 		OrderActivity ordActivity = new OrderActivity();
 		String res = ordActivity.deleteOrder(orderID);
 		if (res.equals("OK")) {
-			return "Your Order has been Deleted";
+			return "order Deleted";
 		}
 		return null;
 	}
