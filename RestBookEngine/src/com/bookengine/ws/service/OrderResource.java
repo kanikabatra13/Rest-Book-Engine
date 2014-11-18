@@ -36,7 +36,7 @@ public class OrderResource implements OrderService{
 	@Produces({ "application/xml", "application/json" })
 	@Path("/orderstatus/{orderId}")
 	public String getOrderStatus(@PathParam("orderId") String orderID) {
-		System.out.println("GET METHOD Request from Client with bookRequest String ............."
+		System.out.println("\nGET METHOD Request from Client to get Order Status of Order ID............."
 						+ orderID);
 		OrderActivity orderActivity = new OrderActivity();
 		return orderActivity.getOrderStatus(orderID);
@@ -47,7 +47,7 @@ public class OrderResource implements OrderService{
 	@Produces({ "application/xml", "application/json" })
 	@Path("/ordercancel/{orderId}")
 	public String cancelOrder(@PathParam("orderId") String orderID) {
-		System.out.println("GET METHOD Request from Client with bookRequest String ............."
+		System.out.println("\nPUT METHOD Request from Client to cancel the order ............."
 						+ orderID);
 		OrderActivity orderActivity = new OrderActivity();
 		return orderActivity.cancelOrder(orderID);
@@ -59,7 +59,7 @@ public class OrderResource implements OrderService{
 	@Path("/orderdelete/{orderId}")
 	public String deleteOrder(String orderID) {
 		
-		System.out.println("Delete METHOD Request from Client with employeeRequest String ............." + orderID);
+		System.out.println("\nDelete METHOD Request from Client to delete Order orderId............." + orderID);
 		OrderActivity ordActivity = new OrderActivity();
 		String res = ordActivity.deleteOrder(orderID);
 		if (res.equals("OK")) {

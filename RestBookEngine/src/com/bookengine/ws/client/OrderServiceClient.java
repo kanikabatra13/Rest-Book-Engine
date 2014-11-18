@@ -81,7 +81,7 @@ public class OrderServiceClient {
      WebClient.getConfig(putClient).getInInterceptors().add(new LoggingInInterceptor());
               
      // change application/xml  to application/json get in json format
-     putClient = putClient.accept("application/xml").type("application/json").path("/orderservice/ordercancel/546");
+     putClient = putClient.accept("application/xml").type("application/json").path("/orderservice/ordercancel/782");
   	
      String putRequestURI = putClient.getCurrentURI().toString();
      System.out.println("Client put METHOD Request URI:  " + putRequestURI);
