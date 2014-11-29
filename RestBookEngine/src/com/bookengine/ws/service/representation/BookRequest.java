@@ -13,6 +13,7 @@ public class BookRequest {
 	private String isbn;
 	private String bookName;
 	private String authorName;
+	private double price;
 
 	public BookRequest() {
 	}
@@ -40,5 +41,14 @@ public class BookRequest {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 
 }

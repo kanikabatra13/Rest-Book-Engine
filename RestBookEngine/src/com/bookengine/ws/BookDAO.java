@@ -9,9 +9,9 @@ public class BookDAO {
 
 	public BookDAO() {
 	
-			Book book1 = new Book("X1","Web Services","Kanika","567-789");
-			Book book2= new Book("X2","XML Programming","Julius","7890-567");
-			Book book3= new Book("X3","Database Programming","Yang","234-890");
+			Book book1 = new Book("X1","Web Services","Kanika","567-789", 78.90);
+			Book book2= new Book("X2","XML Programming","Julius","7890-567", 80);
+			Book book3= new Book("X3","Database Programming","Yang","234-890", 100.67);
 			
 			books.add(book1);
 			books.add(book2);

@@ -28,6 +28,7 @@ public class BookActivity {
 			bookRepresentation.setIsbn(book.getIsbn());
 			bookRepresentation.setBookName(book.getBookName());
 			bookRepresentation.setAuthorName(book.getAuthorName());
+			bookRepresentation.setPrice(book.getPrice());
 
 			// now add this representation in the list
 			bookRepresentations.add(bookRepresentation);
@@ -44,6 +45,7 @@ public class BookActivity {
 		bookRep.setBookName(book.getBookName());
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
+		bookRep.setPrice(book.getPrice());
 
 		return bookRep;
 	}
@@ -58,6 +60,7 @@ public class BookActivity {
 		bookRep.setBookName(book.getBookName());
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
+		bookRep.setPrice(book.getPrice());
 
 		return bookRep;
 	}
@@ -71,6 +74,7 @@ public class BookActivity {
 		bookRep.setBookName(book.getBookName());
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
+		bookRep.setPrice(book.getPrice());
 
 		return bookRep;
 	}

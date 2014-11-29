@@ -13,6 +13,7 @@
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
   	
   <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+    <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/>
       	
   <jaxrs:server name="BookService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
@@ -20,6 +21,7 @@
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
+			<ref bean="cors-filter" />
 		</jaxrs:providers> 
 
 		<jaxrs:schemaLocations>
@@ -29,8 +31,8 @@
 
 	</jaxrs:server>
   	<bean id="bookServiceRest" class="com.bookengine.ws.service.BookResource" />
-  
-  <jaxrs:server name="OrderService" address="http://localhost:8082">
+  	
+  	<jaxrs:server name="OrderService" address="http://localhost:8082">
 		<jaxrs:serviceBeans>
 			<ref bean="orderServiceRest" />
 		</jaxrs:serviceBeans>
@@ -45,6 +47,7 @@
 
 	</jaxrs:server>
   	<bean id="orderServiceRest" class="com.bookengine.ws.service.OrderResource" />
+  
   
 
 </beans>

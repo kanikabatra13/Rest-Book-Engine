@@ -8,12 +8,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Book")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class BookRepresentation {
+public class BookRepresentation extends Representation{
 
 	private String bookId;
 	private String isbn;
 	private String bookName;
 	private String authorName;
+	private double price;
 
 	public BookRepresentation() {
 		}
@@ -57,4 +58,11 @@ public class BookRepresentation {
 		this.authorName = authorName;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

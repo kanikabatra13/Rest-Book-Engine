@@ -7,17 +7,23 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
 
 import com.bookengine.ws.Book;
 import com.bookengine.ws.service.representation.BookRepresentation;
 import com.bookengine.ws.service.workflow.BookActivity;
+
+@CrossOriginResourceSharing(allowAllOrigins = true)
 
 
 @Path("/bookservice/")
 public class BookResource implements BookService {
 
 	@GET
-	@Produces({ "application/xml", "application/json" })
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/book")
 	public List<BookRepresentation> searchAllBooks() {
 		System.out.println("GET METHOD Request for all books .............");
@@ -26,7 +32,7 @@ public class BookResource implements BookService {
 	}
 
 	@GET
-	@Produces({ "application/xml", "application/json" })
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/book/bookId/{bookId}")
 	public BookRepresentation searchId(@PathParam("bookId") String bookId) {
 		System.out.println("GET METHOD Request from Client with Book Id ............."
@@ -37,7 +43,7 @@ public class BookResource implements BookService {
 	}
 	
 	@GET
-	@Produces({ "application/xml", "application/json" })
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/book/bookauthor/{authorName}")
 	public BookRepresentation searchAuthor(@PathParam("authorName") String authorName) {
 		System.out.println("GET METHOD Request from Client with Book Author Name ............."
@@ -48,7 +54,7 @@ public class BookResource implements BookService {
 	}
 	
 	@GET
-	@Produces({ "application/xml", "application/json" })
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/book/bookname/{bookName}")
 	public BookRepresentation searchBookName(@PathParam("bookName") String bookName) {
 		System.out.println("GET METHOD Request from Client with Book Name............."
