@@ -9,6 +9,7 @@ import java.util.Set;
 import com.bookengine.ws.Book;
 import com.bookengine.ws.BookDAO;
 import com.bookengine.ws.service.representation.BookRepresentation;
+import com.bookengine.ws.*;
 
 public class BookActivity {
 
@@ -77,5 +78,16 @@ public class BookActivity {
 		bookRep.setPrice(book.getPrice());
 
 		return bookRep;
+	}
+	
+	/**
+	 * Sets all the links appropriately, for each kind of representation based on state
+	 * @param orderRep
+	 */
+	private void setLinks(BookRepresentation bookRep) {
+		// Set up the activities that can be performed on orders
+		Link buy = new Link("buy", "http://localhost:8082/orderservice/order?bookId=" + bookRep.getBookId());
+		
+		bookRep.setLinks(buy);
 	}
 }
