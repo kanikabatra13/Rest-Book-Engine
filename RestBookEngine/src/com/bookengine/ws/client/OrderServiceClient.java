@@ -35,7 +35,7 @@ public class OrderServiceClient {
      WebClient.getConfig(postClient).getInInterceptors().add(new LoggingInInterceptor());
               
      // change application/xml  to application/json get in json format
-     postClient = postClient.accept("application/xml").type("application/json").path("/orderservice/order");
+     postClient = postClient.accept("application/json").type("application/json").path("/orderservice/order");
   	
      String postRequestURI = postClient.getCurrentURI().toString();
      System.out.println("Client POST METHOD Request URI:  " + postRequestURI);
@@ -81,7 +81,7 @@ public class OrderServiceClient {
      WebClient.getConfig(putClient).getInInterceptors().add(new LoggingInInterceptor());
               
      // change application/xml  to application/json get in json format
-     putClient = putClient.accept("application/xml").type("application/json").path("/orderservice/ordercancel/782");
+     putClient = putClient.accept("application/json").type("application/json").path("/orderservice/ordercancel/782");
   	
      String putRequestURI = putClient.getCurrentURI().toString();
      System.out.println("Client put METHOD Request URI:  " + putRequestURI);
@@ -100,7 +100,7 @@ public class OrderServiceClient {
      WebClient.getConfig(deleteClient).getInInterceptors().add(new LoggingInInterceptor());
      
      // change application/xml  to application/json get in json format
-     deleteClient = deleteClient.accept("application/xml").type("application/json").path("/orderservice/orderdelete/546");
+     deleteClient = deleteClient.accept("application/json").type("application/json").path("/orderservice/orderdelete/546");
   	
      String deleteRequestURI = deleteClient.getCurrentURI().toString();
      System.out.println("Client DELETE METHOD Request URI:  " + deleteRequestURI);

@@ -7,8 +7,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import com.bookengine.ws.service.representation.BookRepresentation;
 import com.bookengine.ws.service.representation.OrderRepresentation;
@@ -16,13 +19,13 @@ import com.bookengine.ws.service.representation.OrderRequest;
 import com.bookengine.ws.service.workflow.BookActivity;
 import com.bookengine.ws.service.workflow.OrderActivity;
 
-
+@CrossOriginResourceSharing(allowAllOrigins = true)
 
 @Path("/orderservice/")
 public class OrderResource implements OrderService{
 
 	@POST
-	@Produces({"application/xml" , "application/json"})
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/order")
 	public OrderRepresentation addOrder(OrderRequest  orderRequest) {
 		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getBookId());
@@ -33,7 +36,7 @@ public class OrderResource implements OrderService{
 	
 
 	@GET
-	@Produces({ "application/xml", "application/json" })
+	@Produces({MediaType.APPLICATION_JSON })
 	@Path("/orderstatus/{orderId}")
 	public String getOrderStatus(@PathParam("orderId") String orderID) {
 		System.out.println("\nGET METHOD Request from Client to get Order Status of Order ID............."
@@ -44,7 +47,7 @@ public class OrderResource implements OrderService{
 	}
 	
 	@PUT
-	@Produces({ "application/xml", "application/json" })
+	@Produces({ MediaType.APPLICATION_JSON})
 	@Path("/ordercancel/{orderId}")
 	public String cancelOrder(@PathParam("orderId") String orderID) {
 		System.out.println("\nPUT METHOD Request from Client to cancel the order ............."
@@ -55,7 +58,7 @@ public class OrderResource implements OrderService{
 	}
 
 	@DELETE
-	@Produces({"application/xml" , "application/json"})
+	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/orderdelete/{orderId}")
 	public String deleteOrder(@PathParam("orderId")String orderID) {
 		
