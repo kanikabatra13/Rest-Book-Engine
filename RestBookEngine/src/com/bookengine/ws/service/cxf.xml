@@ -38,6 +38,7 @@
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
+			<ref bean="cors-filter" />
 		</jaxrs:providers> 
 
 		<jaxrs:schemaLocations>
