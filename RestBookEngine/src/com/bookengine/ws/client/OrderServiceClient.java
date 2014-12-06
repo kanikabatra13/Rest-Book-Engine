@@ -10,6 +10,7 @@ import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
+import com.bookengine.ws.service.representation.CustomerRequest;
 import com.bookengine.ws.service.representation.OrderRequest;
 
 
@@ -42,10 +43,17 @@ public class OrderServiceClient {
      String postRequestHeaders = postClient.getHeaders().toString();
      System.out.println("Client POST METHOD Request Headers:  " + postRequestHeaders);
      OrderRequest orderRequest = new OrderRequest();
+     CustomerRequest customerRequest = new CustomerRequest();
      orderRequest.setBookId("X1");
+     customerRequest.setName("John Smith");
+     customerRequest.setCustId("1234");
+     customerRequest.setAddress("312 N State Street, Chicago IL 60611");
+     customerRequest.setPhone("312-345-9876");
+     orderRequest.setCustomer(customerRequest);
      
      
-  	String responsePost =  postClient.post(orderRequest, String.class);
+     
+  	 String responsePost =  postClient.post(orderRequest, String.class);
      System.out.println("POST MEDTHOD Response ........." + responsePost);
      
      /*****************************************************************************************
@@ -87,8 +95,8 @@ public class OrderServiceClient {
      System.out.println("Client put METHOD Request URI:  " + putRequestURI);
      String putRequestHeaders = putClient.getHeaders().toString();
      System.out.println("Client put METHOD Request Headers:  " + putRequestHeaders);
-  	String responseput =  putClient.put(orderRequest, String.class);
-     System.out.println("put MEDTHOD Response ........." + responseput);
+  	//String responseput =  putClient.put(orderRequest, String.class);
+     //System.out.println("put MEDTHOD Response ........." + responseput);
      
      
      /*****************************************************************************************

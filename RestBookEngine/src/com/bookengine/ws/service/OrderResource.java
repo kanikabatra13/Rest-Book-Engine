@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
+import com.bookengine.ws.Customer;
 import com.bookengine.ws.service.representation.BookRepresentation;
 import com.bookengine.ws.service.representation.OrderRepresentation;
 import com.bookengine.ws.service.representation.OrderRequest;
@@ -26,7 +27,7 @@ import com.bookengine.ws.service.workflow.OrderActivity;
 @Path("/orderservice/")
 public class OrderResource implements OrderService{
 
-	@POST
+	/*@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	//@Produces({ "application/xml", "application/json" })
@@ -36,8 +37,19 @@ public class OrderResource implements OrderService{
 		System.out.println("POST METHOD Request from Client with Book ID............." + bookID);
 		OrderActivity orderActivity = new OrderActivity();
 		return orderActivity.addOrder(bookID);
-	}
+	}*/
 
+	@POST
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	//@Produces({ "application/xml", "application/json" })
+	//@Consumes({ "application/xml", "application/json" })
+	@Path("/order")
+	public OrderRepresentation addOrder(OrderRequest orderRequest) {
+		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getBookId());
+		OrderActivity orderActivity = new OrderActivity();
+		return orderActivity.addOrder(orderRequest.getBookId(), orderRequest.getCustomer());
+	}
 	
 
 	@GET
@@ -75,6 +87,10 @@ public class OrderResource implements OrderService{
 		}
 		return null;
 	}
+
+
+	
+	
 	
 	
 }

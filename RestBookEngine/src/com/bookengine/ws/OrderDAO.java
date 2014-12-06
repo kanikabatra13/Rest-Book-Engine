@@ -31,10 +31,10 @@ public class OrderDAO {
 	}
 	
 
-	public Order buyBooks(String bookId)
+	public Order buyBooks(String bookId, Customer customer)
 	{
 		Order order = new Order();
-		Customer customer = new Customer( );
+		//Customer customer = new Customer(name, address,ph,custId);
 		PaymentInfo paymentinfo = new PaymentInfo();
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(100);

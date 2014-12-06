@@ -1,5 +1,6 @@
 package com.bookengine.ws.service.workflow;
 
+import com.bookengine.ws.Customer;
 import com.bookengine.ws.Order;
 import com.bookengine.ws.OrderDAO;
 import com.bookengine.ws.service.representation.OrderRepresentation;
@@ -7,13 +8,15 @@ import com.bookengine.ws.service.representation.OrderRepresentation;
 
 public class OrderActivity {
 	
+	private static final String String = null;
 	private static OrderDAO orderdao = new OrderDAO();
 	
-	public OrderRepresentation addOrder(String bookId)
+	public OrderRepresentation addOrder(String bookId, Customer customer )
 	{
 	
-        Order order = orderdao.buyBooks(bookId);
-		
+        Order order = orderdao.buyBooks(bookId,customer);
+       
+
 		OrderRepresentation orderRep = new OrderRepresentation();
 		orderRep.setBookID(order.getBookID());
 		orderRep.setOrderID(order.getOrderID());

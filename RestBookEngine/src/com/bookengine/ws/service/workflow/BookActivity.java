@@ -30,6 +30,7 @@ public class BookActivity {
 			bookRepresentation.setBookName(book.getBookName());
 			bookRepresentation.setAuthorName(book.getAuthorName());
 			bookRepresentation.setPrice(book.getPrice());
+			setLinks(bookRepresentation);
 
 			// now add this representation in the list
 			bookRepresentations.add(bookRepresentation);
@@ -47,7 +48,7 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
-
+		setLinks(bookRep);
 		return bookRep;
 	}
 	
@@ -62,6 +63,7 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
+		setLinks(bookRep);
 
 		return bookRep;
 	}
@@ -76,6 +78,7 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
+		setLinks(bookRep);
 
 		return bookRep;
 	}
@@ -86,7 +89,7 @@ public class BookActivity {
 	 */
 	private void setLinks(BookRepresentation bookRep) {
 		// Set up the activities that can be performed on orders
-		Link buy = new Link("buy", "http://localhost:8082/orderservice/order?bookId=" + bookRep.getBookId());
+		Link buy = new Link("buy", "http://localhost:8082/orderservice/order/" + bookRep.getBookId());
 		
 		bookRep.setLinks(buy);
 	}

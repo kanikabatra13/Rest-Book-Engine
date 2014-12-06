@@ -45,11 +45,23 @@ public class OrderRequest {
 	public Customer getCustomer() {
 		return customer;
 	}
+	
+	
 
 	public void setCustomer(Customer customer) {
+		
 		this.customer = customer;
 	}
 
+	public void setCustomer(CustomerRequest customerRequest) {
+		Customer customer2 = new Customer();
+		customer2.setCustId(customerRequest.getCustId());
+		customer2.setAddress(customerRequest.getAddress());
+		customer2.setName(customerRequest.getName());
+		customer2.setPhone(customerRequest.getPhone());
+
+		this.customer = customer2;
+	}
 	public PaymentInfo getPaymentinfo() {
 		return paymentinfo;
 	}
