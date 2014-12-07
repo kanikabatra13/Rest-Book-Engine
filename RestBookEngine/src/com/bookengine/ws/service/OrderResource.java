@@ -20,48 +20,52 @@ import com.bookengine.ws.service.representation.BookRepresentation;
 import com.bookengine.ws.service.representation.OrderRepresentation;
 import com.bookengine.ws.service.representation.OrderRequest;
 import com.bookengine.ws.service.workflow.BookActivity;
+import com.bookengine.ws.service.workflow.CustomerActivity;
 import com.bookengine.ws.service.workflow.OrderActivity;
+
 
 @CrossOriginResourceSharing(allowAllOrigins = true)
 
-@Path("/orderservice/")
+@Path("/order")
 public class OrderResource implements OrderService{
-
-	/*@POST
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	//@Produces({ "application/xml", "application/json" })
-	//@Consumes({ "application/xml", "application/json" })
-	@Path("/order/{bookId}")
-	public OrderRepresentation addOrder(@PathParam("bookId") String bookID) {
-		System.out.println("POST METHOD Request from Client with Book ID............." + bookID);
-		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.addOrder(bookID);
-	}*/
-
-	@POST
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	//@Produces({ "application/xml", "application/json" })
-	//@Consumes({ "application/xml", "application/json" })
-	@Path("/order")
-	public OrderRepresentation addOrder(OrderRequest orderRequest) {
-		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getBookId());
-		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.addOrder(orderRequest.getBookId(), orderRequest.getCustomer());
-	}
+	
 	
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON })
-	@Path("/orderstatus/{orderId}")
-	public String getOrderStatus(@PathParam("orderId") String orderID) {
+	@Path("/{orderId}")
+	public Response getOrder(@PathParam("orderId") String orderID, @QueryParam("username") String username, 
+			@QueryParam("password") String password) {
 		System.out.println("\nGET METHOD Request from Client to get Order Status of Order ID............."
 						+ orderID);
 		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.getOrderStatus(orderID);
+		CustomerActivity customerActivity = new CustomerActivity();
+		
+		// authorize the customer
+		String customerId = customerActivity.authenticate(username, password);
+		if (customerId != null) {
+			return Response.ok(orderActivity.getOrder(orderID, customerId)).build();
+		}
+		return Response.status(Status.UNAUTHORIZED).build();
 		
 	}
+
+	
+
+	@POST
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path("/order")
+	public OrderRepresentation addOrder(OrderRequest orderRequest) {
+		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getBookId());
+		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getCustomer());
+		
+		OrderActivity orderActivity = new OrderActivity();
+		return orderActivity.addOrder(orderRequest.getBookId(), orderRequest.getCustomer());
+		//System.out.println("after activity");
+	}
+	
+
 	
 	@PUT
 	@Produces({ MediaType.APPLICATION_JSON})

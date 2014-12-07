@@ -46,7 +46,7 @@ public class OrderServiceClient {
      CustomerRequest customerRequest = new CustomerRequest();
      orderRequest.setBookId("X1");
      customerRequest.setName("John Smith");
-     customerRequest.setCustId("1234");
+     customerRequest.setCustID("1234");
      customerRequest.setAddress("312 N State Street, Chicago IL 60611");
      customerRequest.setPhone("312-345-9876");
      orderRequest.setCustomer(customerRequest);

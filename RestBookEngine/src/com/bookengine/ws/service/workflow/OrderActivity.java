@@ -13,7 +13,7 @@ public class OrderActivity {
 	
 	public OrderRepresentation addOrder(String bookId, Customer customer )
 	{
-	
+	    System.out.println("in activity");
         Order order = orderdao.buyBooks(bookId,customer);
        
 
@@ -23,25 +23,30 @@ public class OrderActivity {
 		orderRep.setCustomer(order.getCustomer());
 		orderRep.setPaymentinfo(order.getPaymentinfo());
 		orderRep.setStatus(order.getStatus());
-		
+		System.out.println("after activity");
 		
 		return orderRep;
+		
 	}
 	
-	public String getOrderStatus(String orderID)
+	public String getOrder(String orderID, String customerId)
 	{
 	
-        String status = orderdao.getOrderStatus(orderID);
+       // String status = orderdao.getOrderStatus(orderID);
+        Order order = orderdao.getCustomerOrder(orderID, customerId);
 		
-		/*OrderRepresentation orderRep = new OrderRepresentation();
-		orderRep.setBookID(order.getBookID());
-		orderRep.setOrderID(order.getOrderID());
+        OrderRepresentation orderRepresentation = new OrderRepresentation();
+		orderRep.setId(order.getId());
 		orderRep.setCustomer(order.getCustomer());
-		orderRep.setPaymentinfo(order.getPaymentinfo());
-		orderRep.setStatus(order.getStatus());
-		*/
-		
-		return status;
+		orderRep.setBillingAddress(order.getBillingAddress());
+		orderRep.setShippingAddress(order.getShippingAddress());
+		orderRep.setCreditCard(order.getCreditCard());
+		orderRep.setShippingCompany(order.getShippingCompany());
+		orderRep.setLines(order.getLines());
+		orderRep.setPaymentReceived(order.isPaymentReceived());
+		orderRep.setOrderState(order.getOrderState());
+		setLinks(orderRep);
+		return orderRep;
 	}
 	
 	

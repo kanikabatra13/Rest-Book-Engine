@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+
+
+
 public class OrderDAO {
 
 	private List<Order> orders = new ArrayList<Order>();
@@ -104,6 +107,27 @@ public class OrderDAO {
 		for (Order order : orders) {
 			if (order.getOrderID().equals(orderID))
 				return order.getCustomer();
+		}
+		return null;
+	}
+	
+	public List<Order> getOrdersByCustomerId(String customerId) {
+		List<Order> customerOrders = new ArrayList<Order>();
+		for (Order order : orders){
+			if (order.getCustomer().getCustID().equals(customerId)) {
+				customerOrders.add(order);
+			}
+		}
+		return customerOrders;
+	    }
+	
+	
+	public Order getCustomerOrder(String id, String customerId) {
+		List<Order> orders = getOrdersByCustomerId(customerId);
+		for (Order order : orders) {
+			if(order.getOrderID().equals(id)) {
+				return order;
+			}
 		}
 		return null;
 	}

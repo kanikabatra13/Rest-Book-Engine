@@ -2,7 +2,7 @@ package com.bookengine.ws;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "Book")
 public class Book {
 
 	private String bookId;

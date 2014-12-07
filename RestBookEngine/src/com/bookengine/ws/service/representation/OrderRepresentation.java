@@ -11,7 +11,7 @@ import com.bookengine.ws.PaymentInfo;
 @XmlRootElement(name = "Order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class OrderRepresentation {
+public class OrderRepresentation extends Representation{
 	
 	private String orderID;
 	private String bookID;

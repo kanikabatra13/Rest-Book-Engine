@@ -55,7 +55,7 @@ public class OrderRequest {
 
 	public void setCustomer(CustomerRequest customerRequest) {
 		Customer customer2 = new Customer();
-		customer2.setCustId(customerRequest.getCustId());
+		customer2.setCustID(customerRequest.getCustID());
 		customer2.setAddress(customerRequest.getAddress());
 		customer2.setName(customerRequest.getName());
 		customer2.setPhone(customerRequest.getPhone());
