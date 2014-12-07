@@ -11,9 +11,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
 
 
 
@@ -32,7 +34,7 @@ public class BookResource implements BookService {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/book")
+	@Path("/books")
 	public List<BookRepresentation> searchAllBooks() {
 		System.out.println("GET METHOD Request for all books .............");
 		BookActivity bookActivity = new BookActivity();
@@ -41,7 +43,7 @@ public class BookResource implements BookService {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/book/bookId/{bookId}")
+	@Path("/bookId/{bookId}")
 	public BookRepresentation searchId(@PathParam("bookId") String bookId) {
 		System.out.println("GET METHOD Request from Client with Book Id ............."
 						+ bookId);
@@ -52,7 +54,7 @@ public class BookResource implements BookService {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/book/bookauthor/{authorName}")
+	@Path("/bookauthor/{authorName}")
 	public BookRepresentation searchAuthor(@PathParam("authorName") String authorName) {
 		System.out.println("GET METHOD Request from Client with Book Author Name ............."
 						+ authorName);
@@ -63,7 +65,7 @@ public class BookResource implements BookService {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/book/bookname/{bookName}")
+	@Path("/bookname/{bookName}")
 	public BookRepresentation searchBookName(@PathParam("bookName") String bookName) {
 		System.out.println("GET METHOD Request from Client with Book Name............."
 						+ bookName);
@@ -73,7 +75,15 @@ public class BookResource implements BookService {
 	}
 	
 
-	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path("/book/{bookid}")
+	public BookRepresentation bookRep(
+			@PathParam("bookid") String bookId, 
+			@QueryParam("order_id") String orderId) {
+		BookActivity bookActivity = new BookActivity();
+		return bookActivity.bookRep(bookId, orderId);
+	}
 
 	
 	

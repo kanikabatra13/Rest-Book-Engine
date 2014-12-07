@@ -30,8 +30,7 @@ public class Customer {
 		this.phone = phone;
 		this.userName = userName;
 		this.password = password;
-		//this.books = books;
-		
+			
 	}
 	
 	public String getName() {

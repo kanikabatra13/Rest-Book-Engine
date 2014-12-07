@@ -18,6 +18,7 @@ public interface BookService {
 	public BookRepresentation searchId(String bookId);
 	public BookRepresentation searchAuthor(String authorName);
 	public BookRepresentation searchBookName(String bookName);
+	public BookRepresentation bookRep(String id, String orderId);
 	
 	//public BookRepresentation searchAuthor(String authorName);
 	

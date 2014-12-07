@@ -12,9 +12,10 @@ import javax.ws.rs.core.Response;
 @WebService
 public interface OrderService {
 
-	public OrderRepresentation addOrder(OrderRepresentation orderrep);
+	
 	public OrderRepresentation getOrder(String orderID);
 	public List<OrderRepresentation> getOrders();
-	public OrderRepresentation updateOrder(String id, OrderRepresentation orderRequest);
+	public OrderRepresentation addOrder(OrderRepresentation orderrep);
+	//public OrderRepresentation updateOrder(String id, OrderRepresentation orderRequest);
 	public Response deleteOrder(String id);
 }

@@ -18,37 +18,21 @@
   <jaxrs:server name="BookService" address="http://localhost:8081">
 		<jaxrs:serviceBeans>
 			<ref bean="bookServiceRest" />
+			<ref bean="orderServiceRest" />
+			<ref bean="customerServiceRest" />
+			
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
 			<ref bean="cors-filter" />
 		</jaxrs:providers> 
 
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.BookRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.BookRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
+		
 
 	</jaxrs:server>
   	<bean id="bookServiceRest" class="com.bookengine.ws.service.BookResource" />
-  	
-  	<jaxrs:server name="OrderService" address="http://localhost:8082">
-		<jaxrs:serviceBeans>
-			<ref bean="orderServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-			<ref bean="cors-filter" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.OrderRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.bookengine.ws.service.representation.OrderRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
   	<bean id="orderServiceRest" class="com.bookengine.ws.service.OrderResource" />
-  
-  
-
+  	<bean id="customerServiceRest" class="com.bookengine.ws.service.CustomerResource" />
+  	
+  	
 </beans>

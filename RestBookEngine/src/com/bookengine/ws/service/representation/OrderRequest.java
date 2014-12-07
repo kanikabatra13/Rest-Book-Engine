@@ -1,10 +1,13 @@
 package com.bookengine.ws.service.representation;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.bookengine.ws.Book;
 import com.bookengine.ws.Customer;
 import com.bookengine.ws.PaymentInfo;
 
@@ -15,22 +18,26 @@ import com.bookengine.ws.PaymentInfo;
 @XmlType(name = "")
 public class OrderRequest {
 
-	private String orderId;
-	private String bookId;
+	private String orderID;
+	private List<Book> books;
+	
 	private String status;
-	private Customer customer;
-	private PaymentInfo paymentinfo;
-
+	private String shipaddress;
+	private Customer customer = new Customer();
+	private String namecard;
+	private String cardtype;
+	private String cardnum;
+	
 	public OrderRequest() {
 
 	}
 
-	public String getOrderId() {
-		return orderId;
+	public String getOrderID() {
+		return orderID;
 	}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 
 	public String getStatus() {
@@ -41,44 +48,54 @@ public class OrderRequest {
 		this.status = status;
 	}
 
-
 	public Customer getCustomer() {
 		return customer;
 	}
-	
-	
 
 	public void setCustomer(Customer customer) {
-		
 		this.customer = customer;
 	}
 
-	public void setCustomer(CustomerRequest customerRequest) {
-		Customer customer2 = new Customer();
-		customer2.setCustID(customerRequest.getCustID());
-		customer2.setAddress(customerRequest.getAddress());
-		customer2.setName(customerRequest.getName());
-		customer2.setPhone(customerRequest.getPhone());
-
-		this.customer = customer2;
-	}
-	public PaymentInfo getPaymentinfo() {
-		return paymentinfo;
-	}
-
-	public void setPaymentinfo(PaymentInfo paymentinfo) {
-		this.paymentinfo = paymentinfo;
-	}
-
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
-	}
-
 	
-	public String getBookId() {
-		return bookId;
-	}
+		public String getShipaddress() {
+			return shipaddress;
+		}
 
-	
+		public void setShipaddress(String shippaddress) {
+			this.shipaddress = shippaddress;
+		}
+
+		public String getCardtype() {
+			return cardtype;
+		}
+
+		public void setCardtype(String cardtype) {
+			this.cardtype = cardtype;
+		}
+
+		public String getCardnum() {
+			return cardnum;
+		}
+
+		public void setCardnum(String cardnum) {
+			this.cardnum = cardnum;
+		}
+
+		public List<Book> getBooks() {
+			return books;
+		}
+
+		public void setBooks(List<Book> books) {
+			this.books = books;
+		}
+
+		public String getNamecard() {
+			return namecard;
+		}
+
+		public void setNamecard(String namecard) {
+			this.namecard = namecard;
+		}
+
 
 }

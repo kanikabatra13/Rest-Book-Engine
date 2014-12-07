@@ -30,8 +30,7 @@ public class BookActivity {
 			bookRepresentation.setBookName(book.getBookName());
 			bookRepresentation.setAuthorName(book.getAuthorName());
 			bookRepresentation.setPrice(book.getPrice());
-			setLinks(bookRepresentation);
-
+		
 			// now add this representation in the list
 			bookRepresentations.add(bookRepresentation);
 		}
@@ -48,7 +47,7 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
-		setLinks(bookRep);
+		
 		return bookRep;
 	}
 	
@@ -63,7 +62,7 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
-		setLinks(bookRep);
+		
 
 		return bookRep;
 	}
@@ -78,8 +77,24 @@ public class BookActivity {
 		bookRep.setIsbn(book.getIsbn());
 		bookRep.setAuthorName(book.getAuthorName());
 		bookRep.setPrice(book.getPrice());
-		setLinks(bookRep);
+		
 
+		return bookRep;
+	}
+	
+	public BookRepresentation bookRep(String id, String orderId) {
+		Book book = dao.searchId(id);
+		
+		BookRepresentation bookRep = new BookRepresentation();
+		bookRep.setBookId(book.getBookId());
+		bookRep.setBookName(book.getBookName());
+		bookRep.setIsbn(book.getIsbn());
+		bookRep.setAuthorName(book.getAuthorName());
+		bookRep.setPrice(book.getPrice());
+		
+		// Add the links
+		setLinks(bookRep, orderId);
+		
 		return bookRep;
 	}
 	
@@ -87,9 +102,9 @@ public class BookActivity {
 	 * Sets all the links appropriately, for each kind of representation based on state
 	 * @param orderRep
 	 */
-	private void setLinks(BookRepresentation bookRep) {
+	private void setLinks(BookRepresentation bookRep, String orderId) {
 		// Set up the activities that can be performed on orders
-		Link buy = new Link("buy", "http://localhost:8082/orderservice/order/" + bookRep.getBookId());
+		Link buy = new Link("buy", "http://localhost:8081/bookservice/order/?bookId=" + bookRep.getBookId());
 		
 		bookRep.setLinks(buy);
 	}

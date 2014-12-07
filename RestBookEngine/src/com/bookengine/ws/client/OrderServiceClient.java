@@ -1,4 +1,4 @@
-package com.bookengine.ws.client;
+/*package com.bookengine.ws.client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +27,9 @@ public class OrderServiceClient {
      providers.add(provider);
      
      
-     /*****************************************************************************************
+     *//*****************************************************************************************
       * POST METHOD invoke
-     *****************************************************************************************/
+     *****************************************************************************************//*
      System.out.println("POST METHOD .........................................................");
      WebClient postClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(postClient).getOutInterceptors().add(new LoggingOutInterceptor());
@@ -56,9 +56,9 @@ public class OrderServiceClient {
   	 String responsePost =  postClient.post(orderRequest, String.class);
      System.out.println("POST MEDTHOD Response ........." + responsePost);
      
-     /*****************************************************************************************
+     *//*****************************************************************************************
       * GET METHOD invoke
-      *****************************************************************************************/
+      *****************************************************************************************//*
      System.out.println("\nGET METHOD ............................................OrderStatus");
      WebClient getClient = WebClient.create("http://localhost:8082", providers);
      
@@ -80,9 +80,9 @@ public class OrderServiceClient {
      String response = getClient.get(String.class);
      System.out.println("GET METHOD Response: ...." + response);
      
-     /*****************************************************************************************
+     *//*****************************************************************************************
       * PUT METHOD invoke
-     *****************************************************************************************/
+     *****************************************************************************************//*
      System.out.println("\nPUT METHOD ......................................................OrderCancel");
      WebClient putClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(putClient).getOutInterceptors().add(new LoggingOutInterceptor());
@@ -99,9 +99,9 @@ public class OrderServiceClient {
      //System.out.println("put MEDTHOD Response ........." + responseput);
      
      
-     /*****************************************************************************************
+     *//*****************************************************************************************
       * DELETE METHOD invoke
-     *****************************************************************************************/
+     *****************************************************************************************//*
      System.out.println("\nDELETE METHOD .........................................................");
      WebClient deleteClient = WebClient.create("http://localhost:8082", providers);
      WebClient.getConfig(deleteClient).getOutInterceptors().add(new LoggingOutInterceptor());
@@ -126,3 +126,4 @@ public class OrderServiceClient {
      
 }
 }
+*/

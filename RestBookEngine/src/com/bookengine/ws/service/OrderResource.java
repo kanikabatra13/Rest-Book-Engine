@@ -1,5 +1,7 @@
 package com.bookengine.ws.service;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -34,9 +36,9 @@ public class OrderResource implements OrderService{
 	@GET
 	@Produces({MediaType.APPLICATION_JSON })
 	@Path("/{orderId}")
-	public Response getOrder(@PathParam("orderId") String orderID, @QueryParam("username") String username, 
+	public  Response getOrder(@PathParam("orderId") String orderID, @QueryParam("username") String username, 
 			@QueryParam("password") String password) {
-		System.out.println("\nGET METHOD Request from Client to get Order Status of Order ID............."
+		System.out.println("\nGET METHOD Request from Client to get Order of Order ID............."
 						+ orderID);
 		OrderActivity orderActivity = new OrderActivity();
 		CustomerActivity customerActivity = new CustomerActivity();
@@ -49,6 +51,19 @@ public class OrderResource implements OrderService{
 		return Response.status(Status.UNAUTHORIZED).build();
 		
 	}
+	
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path("/")
+	public List<OrderRepresentation> getOrders(
+			@QueryParam("username") String username, 
+			@QueryParam("password") String password) {
+		OrderActivity orderActivity = new OrderActivity();
+		CustomerActivity customerActivity = new CustomerActivity();
+		String customerId = customerActivity.authenticate(username, password);	
+		return orderActivity.getOrders(customerId);
+	}
 
 	
 
@@ -56,12 +71,17 @@ public class OrderResource implements OrderService{
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/order")
-	public OrderRepresentation addOrder(OrderRequest orderRequest) {
-		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getBookId());
-		System.out.println("POST METHOD Request from Client with Book ID............." + orderRequest.getCustomer());
-		
+	public Response addOrder(@QueryParam("book_id") String bookId, @QueryParam("username") String username, 
+			@QueryParam("password") String password) {
+		System.out.println("POST METHOD Request from Client with Book ID............." );		
 		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.addOrder(orderRequest.getBookId(), orderRequest.getCustomer());
+		CustomerActivity customerActivity = new CustomerActivity();
+		String customerId = customerActivity.authenticate(username, password);
+		if (customerId != null) {
+			return Response.ok(orderActivity.addOrder(customerId, bookId)).build();
+		}
+		return Response.status(Status.UNAUTHORIZED).build();
+		
 		//System.out.println("after activity");
 	}
 	
@@ -69,7 +89,7 @@ public class OrderResource implements OrderService{
 	
 	@PUT
 	@Produces({ MediaType.APPLICATION_JSON})
-	@Path("/ordercancel/{orderId}")
+	@Path("/cancel/{orderId}")
 	public String cancelOrder(@PathParam("orderId") String orderID) {
 		System.out.println("\nPUT METHOD Request from Client to cancel the order ............."
 						+ orderID);
@@ -80,21 +100,39 @@ public class OrderResource implements OrderService{
 
 	@DELETE
 	@Produces({MediaType.APPLICATION_JSON})
-	@Path("/orderdelete/{orderId}")
-	public String deleteOrder(@PathParam("orderId")String orderID) {
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/delete/{orderId}")
+	public Response deleteOrder(@PathParam("orderId")String orderID) {
 		
 		System.out.println("\nDelete METHOD Request from Client to delete Order orderId............." + orderID);
 		OrderActivity ordActivity = new OrderActivity();
 		String res = ordActivity.deleteOrder(orderID);
-		if (res.equals("OK")) {
-			return "order Deleted";
-		}
+				if (res.equals("OK")) {
+				return Response.status(Status.OK).build();
+		         }
+		
+	          
+		          return null;
+     }
+
+
+	
+
+
+	public List<OrderRepresentation> getOrders() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	
-	
-	
-	
+	public OrderRepresentation addOrder(OrderRepresentation orderrep) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public OrderRepresentation getOrder(String orderID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

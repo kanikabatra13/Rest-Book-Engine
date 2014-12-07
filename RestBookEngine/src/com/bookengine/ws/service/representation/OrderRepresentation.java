@@ -1,10 +1,13 @@
 package com.bookengine.ws.service.representation;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.bookengine.ws.Book;
 import com.bookengine.ws.Customer;
 import com.bookengine.ws.PaymentInfo;
 
@@ -14,24 +17,22 @@ import com.bookengine.ws.PaymentInfo;
 public class OrderRepresentation extends Representation{
 	
 	private String orderID;
-	private String bookID;
+	private List<Book> books;
+	
 	private String status;
+	private String shipaddress;
 	private Customer customer = new Customer();
-	private PaymentInfo paymentinfo = new PaymentInfo();
+	private String namecard;
+	private String cardtype;
+	private String cardnum;
+	
 	
 	public OrderRepresentation()
 	{
 		
 	}
 	 
-	public OrderRepresentation(String orderID, String bookID, String status, Customer customer, PaymentInfo paymentinfo)
-	{
-		this.orderID = orderID;
-		this.bookID = bookID;
-		this.status = status;
-		this.customer = customer;
-		this.paymentinfo = paymentinfo;
-	}
+	
 
 	public String getOrderID() {
 		return orderID;
@@ -57,20 +58,47 @@ public class OrderRepresentation extends Representation{
 		this.customer = customer;
 	}
 
-	public PaymentInfo getPaymentinfo() {
-		return paymentinfo;
-	}
+	
+		public String getShipaddress() {
+			return shipaddress;
+		}
 
-	public void setPaymentinfo(PaymentInfo paymentinfo) {
-		this.paymentinfo = paymentinfo;
-	}
+		public void setShipaddress(String shippaddress) {
+			this.shipaddress = shippaddress;
+		}
 
-	public String getBookID() {
-		return bookID;
-	}
+		public String getCardtype() {
+			return cardtype;
+		}
 
-	public void setBookID(String bookID) {
-		this.bookID = bookID;
-	}
+		public void setCardtype(String cardtype) {
+			this.cardtype = cardtype;
+		}
+
+		public String getCardnum() {
+			return cardnum;
+		}
+
+		public void setCardnum(String cardnum) {
+			this.cardnum = cardnum;
+		}
+
+		public List<Book> getBooks() {
+			return books;
+		}
+
+		public void setBooks(List<Book> books) {
+			this.books = books;
+		}
+
+		public String getNamecard() {
+			return namecard;
+		}
+
+		public void setNamecard(String namecard) {
+			this.namecard = namecard;
+		}
+
+
 
 }
